@@ -1,0 +1,25 @@
+1 html css 没有智能提示建
+未解决
+
+2 <mvc:resources mapping="/voice_analysis/**" location="/WEB-INF/*"/>
+spring不拦截jsp文件，只要在web.xml配置了/,其他的都拦截，所以为了不让用户直接访问jsp就把jsp放在web-inf下。这样只有通过controller才能访问到jsp
+
+webapp下的静态资源 html js css 各种类型的图片等访问不到的，因为被Dispacheservlet拦截了
+所以要通过<mvc:resources mapping="/img/**" location="/img/" />配置，就不拦截了
+
+3 idea user 怎么修改知乎
+未解决
+
+4 格式化快捷鍵
+ctrl alt L
+
+5 js文件可以出现在html jsp的任何位置
+
+6 当前窗口替换文本 ctrl r
+ 所有窗口替换文本 ctrl shift r
+
+7 firefox默认字体微软雅黑
+
+8 tr上弄border无意义，td table上弄吧
+
+9 在img上align=center 是没用的 可以用div。
