@@ -15,13 +15,21 @@
 
         }
 
+        td {
+            border: 1px solid greenyellow;
+        }
+
+        div {
+            border: 1px solid greenyellow;
+        }
+
         a {
             text-decoration: none;
         }
 
         span {
             font-family: 微软雅黑;
-            color: rgb(165 28 46);
+            font-size: 20px;
         }
 
         #lianjie span {
@@ -33,20 +41,32 @@
             color: slategrey;
             font-size: 0.8em;
         }
-        #text span{
-            color:slategrey;
-        }
-        #m span{
+
+        #text span {
             color: slategrey;
         }
-        #ntext span{
+
+        #m span {
             color: slategrey;
         }
-        #n span{
+
+        #ntext span {
             color: slategrey;
         }
+
+        #n span {
+            color: slategrey;
+        }
+        .sdnuRed{
+            background-color:rgb(165,28,46) ;
+            color:white;
+        }
+
     </style>
-    <script src="WEB-INF/js/jquery.js"></script>
+    <script src="js/jquery3.js"></script>
+    <script src="js/searchAndLog.js"></script>
+    <script src="js/scroll.js"></script>
+
 
 </head>
 <body>
@@ -90,9 +110,9 @@
                     <script>
                         var speed = 50  //调整滚动速度
                         var m = document.getElementById("m");
-                        var text = document.getElementById("text");
+                        var mtext = document.getElementById("text");
                         var m1 = document.getElementById("m1");
-                        m.innerHTML = text.innerHTML;
+                        m.innerHTML = mtext.innerHTML;
 
                         var MyMar = setInterval(Marquee, speed);
                         m1.onmouseover = function () {
@@ -104,7 +124,7 @@
 
                         function Marquee() {
                             if (m.offsetTop - m1.scrollTop <= 0)
-                                m1.scrollTop -= text.offsetHeight
+                                m1.scrollTop -= mtext.offsetHeight;
                             else {
                                 m1.scrollTop++
                             }
@@ -173,7 +193,46 @@
     </div>
 
 
-    <div id="query" style="margin-left: 38%;margin-right: 28%" class="bor"><span>馆藏目录</span></div>
+    <div id="query" style="margin-left: 30%;margin-right: 28%" class="bor">
+
+        <table style="table-layout: fixed;width: 500px">
+            <tr>
+                <td>
+                    <span id="search">馆藏目录</span>
+                    <span style="margin-left: 41%"   id="log">我的图书馆</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div id="searchdiv">
+                        <input type="text" style="height: 40px" size="60"/>
+                        <img height="30px" width="30px" style="vertical-align: middle" src="img/search.png">
+                    </div>
+
+                    <div id="logdiv" style="display: none">
+                        <table>
+                            <tr>
+                                <td><span>用户名</span><input type="text" size="30"/><br></td>
+                            </tr>
+                            <tr>
+                                <td><span>密码</span><input type="password" size="30"/><br></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="submit">登录</button>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
 
 </div>
 
@@ -197,7 +256,7 @@
                 <a href="http://www.sdnu.edu.cn/" target="" style=""><span>北京大学图书馆</span></a>
             <td/>
             <td class="bor">
-                <a href="http://www.sdnu.edu.cn/" target="" style=""><span>清华大学图书馆</span></a>
+                <a href="http://lib.tsinghua.edu.cn/dra/" target="" style=""><span>清华大学图书馆</span></a>
             <td/>
             <td class="bor">
                 <a href="http://www.sdnu.edu.cn/" target="" style=""><span>省图书馆</span></a>
@@ -235,10 +294,12 @@
         function get_attribute(node, attr, default_value) {
             return node.getAttribute(attr) || default_value;
         }
+
         //封装方法，压缩之后减少文件大小
         function get_by_tagname(name) {
             return document.getElementsByTagName(name);
         }
+
         //获取配置参数
         function get_config_option() {
             var scripts = get_by_tagname("script"),
@@ -252,6 +313,7 @@
                 n: get_attribute(script, "count", 200) //count
             };
         }
+
         //设置canvas的高宽
         function set_canvas_size() {
             canvas_width = the_canvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,

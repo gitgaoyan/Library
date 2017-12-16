@@ -22,4 +22,11 @@ ctrl alt L
 
 8 tr上弄border无意义，td table上弄吧
 
-9 在img上align=center 是没用的 可以用div。
+9 在img上align=center 是没用的 可以用style="vertical-align: middle"。
+
+10 图片提示在p94 锋利的jquery
+
+11 input 的高度应该在style里面调，html调不了
+
+
+12可以在链接的js文件中引用本文件的css样式。
